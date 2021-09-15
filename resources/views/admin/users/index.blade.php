@@ -5,7 +5,7 @@
     <div class="page-main-header">
         <div class="main-header-left">
             <div class="logo-wrapper">
-                <a href="index.html">
+                <a href="#">
                     <img src="../assets/images/logo-light.png" class="image-dark" alt=""/>
                     <img src="../assets/images/logo-light-dark-layout.png" class="image-light" alt=""/>
                 </a>
@@ -34,7 +34,7 @@
                         </div>
                         <ul class="profile-dropdown onhover-show-div p-20">
                             <li>
-                                <a href="#">
+                                <a href="{{route('users.index',$user)}}">
                                     <i class="icon-user"></i>
                                     Edit Profile
                                 </a>
@@ -65,7 +65,7 @@
         <div class="page-sidebar custom-scrollbar">
             <div class="sidebar-user text-center">
                 <div>
-                    <img class="img-50 rounded-circle" src="../assets/images/user/1.jpg" alt="#">
+                    <img class="img-50 rounded-circle" src="{{asset('/images/11.png')}}" alt="#">
                 </div>
                 <h6 class="mt-3 f-12">Johan Deo</h6>
             </div>
@@ -80,7 +80,6 @@
                     <ul class="sidebar-submenu">
                         <li><a href="{{route('users.show',\Illuminate\Support\Facades\Auth::user())}}"><i class="fa fa-angle-right"></i>Users Profile</a></li>
                         <li><a href="{{route('users.edit',\Illuminate\Support\Facades\Auth::user())}}"><i class="fa fa-angle-right"></i>Users Edit</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i>Users Cards</a></li>
                     </ul>
                 </li>
 
@@ -97,7 +96,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <h3>{{$user->name??"Noname"}}
-                                <small>Universal Admin panel</small>
+                                <small><a class="btn btn-success" href="{{route('users.show',$user)}}">Просмотр</a></small>
                             </h3>
                         </div>
                         <div class="col-lg-6">
@@ -128,6 +127,19 @@
                                             <label class="col-lg-12 control-label text-lg-left" for="name">Your Name</label>
                                             <div class="col-lg-12">
                                                 <input id="name" name="name" type="text" placeholder="name user" class="form-control btn-square input-md" value="{{$user->name}}" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 control-label text-lg-left" for="phone">Your phone</label>
+                                            <div class="col-lg-12">
+                                                <input id="phone" name="phone" type="text" placeholder="phone user" class="form-control btn-square input-md" value="{{$user->phone}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 control-label text-lg-left" for="date_birthday">Date of Birthday</label>
+                                            <div class="col-lg-12">
+                                                <input id="date-birthday" name="date_birthday" type="date"  class="form-control btn-square input-md" value="{{$user->date_birthday}}">
                                             </div>
                                         </div>
 

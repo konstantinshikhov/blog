@@ -24,12 +24,12 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param User $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('admin.users.show',compact('user'));
     }
 
 
@@ -43,12 +43,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user, ImageUploader $imageUploader)
     {
-
         $input = $request->all();
         $input['custom_info'] = $request->list ?? null;
         if ($request->file('avatar')) {
             $input['avatar'] = $imageUploader->upload($request->file('avatar'));
-        }else{
+        } else {
             unset($input['avatar']);
         }
 

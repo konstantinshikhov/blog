@@ -15,25 +15,25 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="css/assets/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/assets/fontawesome.css')}}">
 
     <!-- ico-font -->
-    <link rel="stylesheet" type="text/css" href="css/assets/icofont.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/assets/icofont.css')}}">
 
     <!-- Themify icon -->
-    <link rel="stylesheet" type="text/css" href="css/assets/themify.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/assets/themify.css')}}">
 
     <!-- Flag icon -->
-    <link rel="stylesheet" type="text/css" href="css/assets/flag-icon.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/assets/flag-icon.css')}}">
 
     <!-- Bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="css/assets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/assets/bootstrap.css')}}">
 
     <!-- App css -->
-    <link rel="stylesheet" type="text/css" href="css/assets/style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/assets/style.css')}}">
 
     <!-- Responsive css -->
-    <link rel="stylesheet" type="text/css" href="css/assets/responsive.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/assets/responsive.css')}}">
 
 </head>
 
@@ -54,23 +54,34 @@
 <!--page-wrapper Start-->
 <div class="page-wrapper">
 
+    @if (isset($errors) && count($errors))
+        <div class="alert alert-danger">
+            <b>Sorry, but there was an error:</b>
+            <ul class='m-0'>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
   @yield('content')
 
 </div>
 <!--page-wrapper Ends-->
 
 <!-- latest jquery-->
-<script src="js/assets/jquery-3.2.1.min.js"></script>
+<script src="{{asset('js/assets/jquery-3.2.1.min.js')}}"></script>
 
 <!-- Bootstrap js-->
-<script src="js/assets/bootstrap/popper.min.js"></script>
-<script src="js/assets/bootstrap/bootstrap.js"></script>
+<script src="{{asset('js/assets/bootstrap/popper.min.js')}}"></script>
+<script src="{{asset('js/assets/bootstrap/bootstrap.js')}}"></script>
 
 <!-- Sidebar jquery-->
-<script src="js/assets/sidebar-menu.js"></script>
+<script src="{{asset('js/assets/sidebar-menu.js')}}"></script>
 
 <!-- Theme js-->
-<script src="js/assets/script.js"></script>
+<script src="{{asset('js/assets/script.js')}}"></script>
 @stack('scripts')
 
 </body>
